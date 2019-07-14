@@ -1,12 +1,11 @@
-import React from "react";
-import { StyleSheet, Text, View, ImageBackground } from "react-native";
-import { Location, Permissions } from "expo";
+//list that contain qr-code, your discount points, and your name
+import React from 'react';
+import { Text, View } from 'react-native';
 import { TabNavigator } from 'react-navigation';
 
-import { getWeather } from "./api/Api";
 
-export default class App extends React.Component {
-  state = {
+class HomeScreen extends React.Component {
+   state = {
     weatherData: [],
     loading: false
   };
@@ -39,7 +38,7 @@ export default class App extends React.Component {
     const location = await Location.getCurrentPositionAsync({});
     this.setState({ location });
   }
-
+	
   render() {
     const { weather, main } = this.state.weatherData;
 
@@ -77,37 +76,3 @@ export default class App extends React.Component {
     }
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    paddingLeft: 10,
-    color: "white"
-  },
-  background: {
-    width: "100%",
-    height: "100%"
-  },
-  userCodeBlock: {
-	width: 300,
-    height: 300
-  },
-  weatherCard: {
-    width: 350,
-    height: 620,
-    borderRadius: 20,
-    shadowOffset: { width: 0, height: 6 },
-    shadowColor: "#000",
-    shadowOpacity: 0.5,
-    shadowRadius: 14,
-    elevation: 13,
-    padding: 10
-  },
-  text: {
-    fontSize: 40,
-    textAlign: "center",
-    color: "white"
-  }
-});
